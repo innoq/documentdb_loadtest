@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3a8538b1ae4aa29811aa810fd1a9067853fa29fb168e5b7a856383ea530a8c36"
+            "sha256": "1c38d6464abee9aedd2038b502b35a6e8f23f8c0a4b3e408a8324ae8c517e0c2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,14 @@
         ]
     },
     "default": {
+        "docutils": {
+            "hashes": [
+                "sha256:0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af",
+                "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4'",
+            "version": "==0.16"
+        },
         "pymongo": {
             "hashes": [
                 "sha256:019ddf7ced8e42cc6c8c608927c799be8097237596c94ffe551f6ef70e55237e",
@@ -85,6 +93,13 @@
             ],
             "index": "pypi",
             "version": "==3.11.2"
+        },
+        "statistics": {
+            "hashes": [
+                "sha256:2dc379b80b07bf2ddd5488cad06b2b9531da4dd31edb04dc9ec0dc226486c138"
+            ],
+            "index": "pypi",
+            "version": "==1.0.3.5"
         }
     },
     "develop": {}
