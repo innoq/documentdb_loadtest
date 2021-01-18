@@ -26,7 +26,10 @@ class Stopwatch:
     @staticmethod
     def print_report():
         printer = pprint.PrettyPrinter(indent=2)
-        for tag, results in Stopwatch.get_results().items():
+        items = Stopwatch.get_results().items()
+        if len(items) == 0:
+            print("ERROR: no test results. Please check the database connection.")
+        for tag, results in items:
             print(f"\n{tag}")
             printer.pprint(results)
 

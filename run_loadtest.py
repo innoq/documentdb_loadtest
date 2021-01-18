@@ -1,5 +1,6 @@
 import concurrent.futures
 import random
+import time
 from datetime import datetime, timedelta
 
 from common.users import get_random_user_id
@@ -30,3 +31,4 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=N_THREADS) as executor:
         executor.map(run_thread, range(N_THREADS))
 
 Stopwatch.print_report()
+print("done")

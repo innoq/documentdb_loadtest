@@ -7,4 +7,4 @@ DB_USER = os.environ.get("DB_USER")
 DB_PASSWORD = os.environ.get("DB_PASSWORD")
 
 N_THREADS = int(os.environ.get("N_THREADS", 100))
-DURATION = int(os.environ.get("DURATION", 60))
+DURATION = int(os.environ.get("DURATION", 20))
