@@ -48,7 +48,7 @@ class Stopwatch:
 
     @staticmethod
     def print_report():
-        print(Stopwatch.get_report())
+        print(Stopwatch.get_formatted_report())
 
     @staticmethod
     def get_formatted_report():

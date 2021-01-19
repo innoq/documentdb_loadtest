@@ -16,12 +16,12 @@ MAX_HOURS_IN_PAST = 24 * 60
 
 def simulate_user_action():
     time = TODAY - timedelta(hours=random.randint(0, MAX_HOURS_IN_PAST))
-    user_id = get_random_user_id()
-    offer_list = get_offers_list(user_id, time)
+    user_ids = [get_random_user_id() for _ in range(3)]
+    offer_list = get_offers_list(user_ids, time)
     if len(offer_list) < 2:
         return
     interesting_offers = list(filter(lambda o: random.random() < 0.2, offer_list))
-    [get_offer_details(offer["id"], user_id) for offer in interesting_offers]
+    [get_offer_details(offer["id"], user_ids) for offer in interesting_offers]
 
 def run_thread(thread_name):
     test_end = datetime.now() + timedelta(seconds=DURATION)
