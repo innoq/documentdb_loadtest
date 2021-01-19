@@ -5,7 +5,7 @@ from common.mongodb_repo import (create_indices, drop_db, insert_many_orders,
 from testdata_building.builder import (create_orders_for_offer,
                                        create_random_number_of_offers)
 
-N_DAYS = 60
+N_DAYS = 90
 TODAY = datetime.now().replace(hour=6, minute=0, second=0)
 
 drop_db()

@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 pymongo = "*"
 statistics = "*"
+boto3 = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"

@@ -4,4 +4,4 @@ COPY . /loadtest
 WORKDIR /loadtest
 RUN pip install pipenv
 RUN pipenv install --system --deploy --ignore-pipfile
-ENTRYPOINT ["stdbuf", "-oL", "python", "-u", "./run_loadtest.py"]
+CMD ["stdbuf", "-oL", "python", "-u", "./run_loadtest.py"]

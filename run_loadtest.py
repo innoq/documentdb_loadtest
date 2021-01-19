@@ -1,10 +1,13 @@
 import concurrent.futures
 import random
-import time
 from datetime import datetime, timedelta
 
+import boto3
+
+from common.aws_s3_uploader import upload_file
+from common.slack_webhook import send_data_to_slack
 from common.users import get_random_user_id
-from config import DURATION, N_THREADS
+from config import DURATION, N_THREADS, S3_BUCKET_NAME, SLACK_WEBHOOK_URL
 from loadtest.offer_service import get_offer_details, get_offers_list
 from loadtest.stopwatch import Stopwatch
 
@@ -31,4 +34,13 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=N_THREADS) as executor:
         executor.map(run_thread, range(N_THREADS))
 
 Stopwatch.print_report()
+
+if S3_BUCKET_NAME:
+    file_name = f"loadtest_results_{N_THREADS}_threads_for_{DURATION}s_on_{datetime.now().isoformat()}.txt"
+    Stopwatch.save_report(file_name)
+    upload_file(file_name, file_name)
+
+if SLACK_WEBHOOK_URL:
+    send_data_to_slack(Stopwatch.get_formatted_report())
+
 print("done")

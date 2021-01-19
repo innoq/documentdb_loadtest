@@ -2,17 +2,21 @@ from datetime import datetime
 from typing import List
 
 from bson.objectid import ObjectId
-from config import DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER
+from config import (DB_CONNECTION_URI, DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT,
+                    DB_USE_SSL, DB_USER)
 from loadtest.stopwatch import Stopwatch
 from pymongo import MongoClient
 
 try:
-    _client = MongoClient(host=DB_HOST, port=DB_PORT, username=DB_USER, password=DB_PASSWORD)
+    if DB_CONNECTION_URI:
+        _client = MongoClient(DB_CONNECTION_URI)
+    else:
+        _client = MongoClient(host=DB_HOST, port=DB_PORT, username=DB_USER, password=DB_PASSWORD, ssl=DB_USE_SSL)
     _db = _client.get_database(DB_NAME)
 
     _offers = _db.get_collection("offers")
     _orders = _db.get_collection("orders")
-    print("database connection established")
+    print(f"database connection established. Collections: {_offers.name}, {_orders.name}")
 except:
     print(f"failed to establish database connection to {DB_HOST}:{DB_PORT}")
 
